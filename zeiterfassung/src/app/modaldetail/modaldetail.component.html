@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Zurück</ion-button>
+    </ion-buttons>
+    <ion-title>ProjekteDetail</ion-title>
+    <!--    <ion-buttons slot="end">-->
+    <!--      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>-->
+    <!--    </ion-buttons>-->
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+    <ion-input
+      class="form-input"
+      type="name"
+      fill="solid"
+      label="Projektname"
+      labelPlacement="floating"
+      helperText="Gib einen Namen für das Projekt ein"
+      errorText="Projektname ungültig"
+      [(ngModel)]="createdProjectForm.name"
+    ></ion-input>
+  <br>
+  <ion-input
+    class="form-input"
+    type="name"
+    fill="solid"
+    label="Ort"
+    labelPlacement="floating"
+    helperText="Gib einen Ort für das Projekt an"
+    errorText="Ort ungültig"
+    [(ngModel)]="createdProjectForm.ort"
+  ></ion-input>
+  <div class="modaldetail-buttons">
+    <ion-button (click)="onSave()">Speichern</ion-button>
+  </div>
+</ion-content>

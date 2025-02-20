@@ -82,9 +82,10 @@ export class StecherPage {
 
   initProject(): Project | undefined {
     return this.currentProject = {
-      name: 'Projekt Als Test',
-      ort: 'Frankfurt'
-    };
+      name:"Project3",
+      projectId:3,
+      ort:"xheeh"
+    }
   }
 
   // resetTimer(): void {
@@ -170,21 +171,18 @@ export class StecherPage {
     return this.isRunning && this.currentTimesheet?.type?.valueOf() === state
   }
 
-  logTest(): void {
-    console.log('Test Running log');
-  }
-
   //openmodal
-  async openModal() {
+  async openModal(project: Project | undefined) {
     const modal = await this.modalCtrl.create({
       component: ModalComponent,
+      componentProps: { insertedProject: project }
     });
     await modal.present();
 
     const { data, role } = await modal.onWillDismiss();
 
     if (role === 'confirm') {
-      this.currentProject!.name = `Hello Project, ${data}!`;
+      this.currentProject = data as Project;
     }
   }
 }
