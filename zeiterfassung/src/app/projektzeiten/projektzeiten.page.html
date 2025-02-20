@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Projektzeiten</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-label>Monat auswählen</ion-label>
+        <ion-select [(ngModel)]="selectedMonth" (ionChange)="onMonthChange($event)">
+          <ion-select-option *ngFor="let month of months" [value]="month">
+            {{ month }}
+          </ion-select-option>
+        </ion-select>
+        <ion-badge color="light">{{ projects!.length || 0 }}</ion-badge>
+      </ion-item>
+
+      <ion-card *ngFor="let project of projects">
+        <ion-card-content>
+          <h3>{{ project?.name || 'Kein Projektname' }}</h3>
+          <p><ion-icon name="calendar"></ion-icon> {{ project?.dateStart || 'Kein Startdatum' }} - {{ project?.dateEnd || 'Kein Enddatum' }}</p>
+          <p><ion-icon name="time"></ion-icon> {{ project?.duration || '0:00 Stunden' }}</p>
+        </ion-card-content>
+        <ion-button fill="clear" slot="end">
+          <ion-icon name="play-circle"></ion-icon>
+        </ion-button>
+      </ion-card>
+    </ion-list>
+
+    <ion-footer>
+      <ion-button expand="block" color="dark" shape="round">
+        PDF Generieren
+      </ion-button>
+    </ion-footer>
+  </ion-content>
