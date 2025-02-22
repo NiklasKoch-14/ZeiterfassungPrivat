@@ -1,16 +1,41 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+      <ion-button color="medium" (click)="cancel()">Zurück</ion-button>
     </ion-buttons>
-    <ion-title>Welcome</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
-    </ion-buttons>
+    <ion-title>Projekte</ion-title>
+<!--    <ion-buttons slot="end">-->
+<!--      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>-->
+<!--    </ion-buttons>-->
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
-  <ion-item>
-    <ion-input labelPlacement="stacked" label="Enter your Project" [(ngModel)]="name" placeholder="Your Project"></ion-input>
-  </ion-item>
+<ion-content class="ion-padding" fixed-slot-placement="before">
+  <ion-content *ngIf="projectList" class="project-list">
+    <ion-list>
+      @for (project of projectList; track project; let index = $index) {
+        <ion-item [ngClass]="{'item-selected':project.projectId === insertedProject?.projectId}">
+          <ion-label (click)="selectProject(project)">{{ project.name }}</ion-label>
+          <ion-label (click)="selectProject(project)">{{ project.ort }}</ion-label>
+          <ion-label class="list-icons">
+            <ion-icon style="margin-right: 0.3rem" name="pencil-outline" (click)="openModalDetail(project)"></ion-icon>
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-label>
+        </ion-item>
+      }
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add" (click)="openModalDetail()"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+<!--  <ion-item>-->
+<!--    <ion-input labelPlacement="stacked" label="Enter your Project" [(ngModel)]="name" placeholder="Your Project"></ion-input>-->
+<!--  </ion-item>-->
 </ion-content>

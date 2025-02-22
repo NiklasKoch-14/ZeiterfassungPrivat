@@ -12,8 +12,8 @@ const routes: Routes = [
         loadChildren: () => import('../stecher/stecher.module').then(m => m.StecherPageModule)
       },
       {
-        path: 'zeiten',
-        loadChildren: () => import('../zeiten/zeiten.module').then(m => m.ZeitenPageModule)
+        path: 'projektzeiten',
+        loadChildren: () => import('../projektzeiten/projektzeiten.module').then(m => m.ProjektzeitenPageModule)
       },
       {
         path: '',
