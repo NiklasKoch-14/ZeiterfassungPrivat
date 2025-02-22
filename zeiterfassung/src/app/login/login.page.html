@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Einlogen</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+    <div class="container">
+      <h1>Willkommen zurück</h1>
+      <p>Noch kein Konto? <a  href="/signup" class="link">Registrieren</a></p>
+  
+      <form (submit)="login()">
+        <ion-item>
+          <ion-label position="floating">E-Mail</ion-label>
+          <ion-input type="email" [(ngModel)]="user.email" required></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Passwort</ion-label>
+          <ion-input type="password" [(ngModel)]="user.password" required></ion-input>
+        </ion-item>
+  
+        <ion-button expand="full" type="submit">Einlogen</ion-button>
+      </form>
+    </div>
+  </ion-content>
+  
