@@ -6,28 +6,27 @@
       <ion-title>Registrieren</ion-title>
     </ion-toolbar>
   </ion-header>
-  
+
   <ion-content class="ion-padding">
     <div class="signup-container">
       <h1>Registrieren</h1>
-      <p>Schon ein vorhanden Account? <a href="/login" class="link">Einlogen</a></p>
-  
+      <p>Bereits registiert? <a href="tabs/login" class="link">Einloggen</a></p>
+
       <ion-item>
         <ion-label position="floating">Name</ion-label>
         <ion-input [(ngModel)]="user.name" type="text"></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label position="floating">Email</ion-label>
         <ion-input [(ngModel)]="user.email" type="email"></ion-input>
       </ion-item>
-  
+
       <ion-item>
         <ion-label position="floating">Password</ion-label>
         <ion-input [(ngModel)]="user.password" type="password"></ion-input>
       </ion-item>
-  
+
       <ion-button expand="full" (click)="signup()">Registrieren</ion-button>
     </div>
   </ion-content>
-  
