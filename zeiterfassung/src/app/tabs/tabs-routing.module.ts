@@ -8,6 +8,14 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
+        path: 'signup',
+        loadChildren: () => import('../signup/signup-routing.module').then(m => m.SignupPageRoutingModule)
+      },
+      {
+        path: 'login',
+        loadChildren: () => import('../login/login-routing.module').then(m => m.LoginPageRoutingModule)
+      },
+      {
         path: 'stechen',
         loadChildren: () => import('../stecher/stecher.module').then(m => m.StecherPageModule)
       },

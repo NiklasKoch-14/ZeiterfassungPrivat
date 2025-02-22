@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
+import {IonicModule} from "@ionic/angular";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  standalone: false,
+  standalone: true,
+  imports: [
+    IonicModule,
+    FormsModule
+  ]
 })
 export class LoginPage {
   user = {
