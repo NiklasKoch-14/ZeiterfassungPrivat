@@ -5,6 +5,8 @@ import {Project} from "../api/models/project";
 import {DatePipe} from "@angular/common";
 import {ModalController} from "@ionic/angular";
 import {ModalComponent} from "../modal/modal.component";
+import {ApiService} from "../api/services/api.service";
+import {ZeitenService} from "../services/zeiten.service";
 
 
 @Component({
@@ -15,11 +17,13 @@ import {ModalComponent} from "../modal/modal.component";
 })
 export class StecherPage {
 
-  constructor(private datePipe: DatePipe, private modalCtrl: ModalController) {
+  constructor(private datePipe: DatePipe, private modalCtrl: ModalController, private zeitenService: ZeitenService) {
   }
 
   currentTimesheet: Timesheet | undefined;
   currentProject: Project | undefined;
+
+  message: string = "";
 
   isRunning: boolean = false;
   public time: string = '00:00:00';
@@ -65,6 +69,9 @@ export class StecherPage {
 
   pushTimesheet(): void {
     console.log('Pushing Timesheet');
+    this.zeitenService.zeitenPost(this.currentTimesheet).subscribe(
+      result => {this.message = "Zeiten wurden übertragen " + result}
+    )
     this.currentTimesheet = this.initTimesheet()
     this.currentProject = this.initProject();
     console.log("NEW Timesheet");

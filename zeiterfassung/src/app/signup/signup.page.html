@@ -1,30 +1,23 @@
 <ion-header>
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/"></ion-back-button>
-      </ion-buttons>
       <ion-title>Registrieren</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content class="ion-padding">
     <div class="signup-container">
+      <div *ngIf="message">{{message}}</div>
       <h1>Registrieren</h1>
-      <p>Bereits registiert? <a href="tabs/login" class="link">Einloggen</a></p>
-
-      <ion-item>
-        <ion-label position="floating">Name</ion-label>
-        <ion-input [(ngModel)]="user.name" type="text"></ion-input>
-      </ion-item>
+      <p>Bereits registiert? <a href="/login" class="link">Einloggen</a></p>
 
       <ion-item>
         <ion-label position="floating">Email</ion-label>
-        <ion-input [(ngModel)]="user.email" type="email"></ion-input>
+        <ion-input [(ngModel)]="employee.email" name="email" type="email"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Password</ion-label>
-        <ion-input [(ngModel)]="user.password" type="password"></ion-input>
+        <ion-input [(ngModel)]="employee.password" name="password" type="password"></ion-input>
       </ion-item>
 
       <ion-button expand="full" (click)="signup()">Registrieren</ion-button>

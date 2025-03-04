@@ -1,25 +1,38 @@
 import { Component } from '@angular/core';
+import {AuthService} from "../services/auth.service";
 import {IonicModule} from "@ionic/angular";
-import {FormsModule} from "@angular/forms";
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {Employee} from "../api/models/employee";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  standalone: true,
   imports: [
     IonicModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class LoginPage {
-  user = {
-    email: '',
-    password: ''
-  };
+
+  employee = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
+  });
+
+  constructor(private authService: AuthService,
+              private formBuilder: FormBuilder,
+              private router: Router) {
+  }
 
   login() {
-    console.log('Login erfolgreich:', this.user);
-    // Hier API-Anfrage zum Backen
+    this.authService.login(this.employee.value as Employee).subscribe(response => {
+      if (response.authenticated) {
+        this.router.navigate(['/tabs/stechen']);
+      }
+    });
   }
+
 }

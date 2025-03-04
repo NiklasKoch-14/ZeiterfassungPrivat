@@ -1,25 +1,29 @@
 .container {
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  p {
-    margin-bottom: 20px;
-  }
-  
-  ion-item {
-    --border-radius: 10px;
-    margin-bottom: 15px;
-    margin-top: 15px;
-  }
-  
-  ion-button {
-    margin-top: 20px;
-    --border-radius: 10px;
-    --background: black;
-  }
-  
+  text-align: center;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+ion-item {
+  --border-radius: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+ion-button {
+  margin-top: 20px;
+  --border-radius: 10px;
+  --background: black;
+}
+
+.link {
+  color: #3b82f6;
+  text-decoration: none;
+}

@@ -9,6 +9,7 @@
 <ion-content [fullscreen]="true">
   <ion-grid class="main-grid">
     <ion-col class="clock" size-xs>
+      <ng-template *ngIf="message">{{message}}</ng-template>
       <ng-template *ngIf="currentProject; then existingProject">
         <h2>Wähl ein Projekt aus</h2>
       </ng-template>
